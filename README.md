@@ -1,24 +1,22 @@
-# Mohamed Hamila Portfolio — GitHub Pages
+# Mohamed Hamila — Independent Portfolio
 
-Static copy of a Framer portfolio website, exported from an HTTrack mirror. This is not the original editable Framer project.
+Static HTML/CSS/JavaScript website with no website-builder runtime or dependencies. Ready for GitHub Pages.
 
-## Publish on GitHub Pages
+## Deployment
+1. Upload the **contents** of this folder to repository `mohamedhamila-website` on branch `main`.
+2. GitHub Settings → Pages → Deploy from branch → `main` / `(root)`.
+3. Open `https://mohamedhamila10.github.io/mohamedhamila-website/`.
 
-1. Create a GitHub repository (e.g. `portfolio`).
-2. Upload the **contents of this folder** to the repository root on the `main` branch.
-3. Open **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, branch **main**, folder **/(root)**, then Save.
-4. The project will be accessible at `https://YOUR-USERNAME.github.io/portfolio/` after deployment. For a repository named `YOUR-USERNAME.github.io`, it is served at the user-domain root.
+## Contact form
+Formspree endpoint: https://formspree.io/f/mqpeygld. Test a real submission and check the Formspree dashboard and verified notification email.
 
-## Before publishing
+## Known missing source content
+The supplied archive did not include original Dr Acne project content or MP4 video files. The video page is a truthful placeholder until you provide files. Other project pages and galleries are reconstructed from the archive. Navigation no longer uses animated page transitions.
 
-- Replace `designer@example.com` and `+1 (555) 123-4567` with real contact details, or remove them.
-- `projects/dr-acne-packaging-design.html` appears to contain a fallback/error page rather than the expected project. Re-export that project.
-- Confirm fonts, video embeds, navigation, motion effects, and any forms work. Some scripts and modules load from Framer's external domain.
-- Several very large portfolio images should be compressed/replaced with WebP/AVIF for speed.
-- This snapshot may require another download if the original Framer site changes.
+## Social links
+WhatsApp: https://wa.me/21653525836
+Instagram: https://instagram.com/mohamedhamilaa
+LinkedIn: https://www.linkedin.com/in/mohamedhamilaa/
 
-## Local preview
-
-From this directory: `python -m http.server 8000`, then open http://localhost:8000/.
-
-The HTTrack index and cache files have been excluded, and the actual homepage moved to the website root.
+## Editing
+Update styles in `assets/style.css`, the mobile nav/form in `assets/site.js`, and page content in the HTML pages. Image files reside under `assets/images/`.
