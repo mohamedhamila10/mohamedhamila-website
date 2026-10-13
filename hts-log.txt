@@ -1,0 +1,11 @@
+HTTrack3.50-5 launched on Tue, 13 Oct 2026 19:26:43 at https://mohamedhamila.framer.website/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2%f#f -F "Mozilla/5.0 (compatible; HTTrack; +https://www.httrack.com/)" -%F "<!-- Mirrored from {url} by HTTrack Website Copier/3.x [XR&CO], {date} -->" -%l "en, *" https://mohamedhamila.framer.website/ -O1 "C:\My Web Sites\porftilio v2" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+
+HTTrack Website Copier/3.50-5 mirror complete in 2 minutes 8 seconds : 240 links scanned, 239 files written (174039139 bytes overall) [168861170 bytes received at 1319227 bytes/sec], 5821776 bytes transferred using HTTP compression in 13 files, ratio 4%, 10.9 requests per connection
+(No errors, 0 warnings, 0 messages)
