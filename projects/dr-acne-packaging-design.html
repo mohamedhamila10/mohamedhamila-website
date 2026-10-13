@@ -195,6 +195,30 @@
 	<!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
+
+<!-- GitHub Pages: prevent Framer SPA interception of static HTML navigation -->
+<script id="github-pages-navigation-fix">
+(function () {
+  const root = "/mohamedhamila-website/";
+  const routes = new Set(["", "about", "projects", "videos", "contact"]);
+  document.addEventListener("click", function (event) {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const a = event.target.closest && event.target.closest("a[href]");
+    if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || !url.pathname.startsWith(root)) return;
+    let pathname = url.pathname.slice(root.length).replace(/\/$/, "");
+    if (pathname === "contact") { pathname = "index.html"; url.hash = "contact"; }
+    else if (routes.has(pathname)) pathname = (pathname || "index") + ".html";
+    else if (/^projects\/[^/]+$/.test(pathname)) pathname += ".html";
+    else if (!pathname.endsWith(".html")) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const dest = root + pathname + url.search + url.hash;
+    if (location.pathname + location.search + location.hash !== dest) location.assign(dest);
+  }, true);
+})();
+</script>
 </body>
 
 <!-- Mirrored from https://mohamedhamila.framer.website/projects/dr-acne-packaging-design by HTTrack Website Copier/3.x [XR&CO], Tue, 13 Oct 2026 18:53:12 GMT -->
