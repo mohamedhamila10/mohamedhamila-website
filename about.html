@@ -165,6 +165,81 @@
 	<!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
+<script id="github-formspree-contact-fix">
+/* GitHub Pages contact form adapter. Retains Framer layout and styling. */
+(function () {
+  'use strict';
+  const endpoint = 'https://formspree.io/f/mqpeygld';
+  const originalLabels = new WeakMap();
+  document.addEventListener('submit', async function (event) {
+    const form = event.target;
+    if (!(form instanceof HTMLFormElement) || !form.matches('form.framer-YTHv1')) return;
+    // Capture before Framer's delegated handlers to prevent its obsolete endpoint.
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    if (form.dataset.formspreeBusy === 'true') return;
+    if (!form.reportValidity()) return;
+
+    const name = form.querySelector('[name="Name"]');
+    const email = form.querySelector('[name="Email"]');
+    const service = form.querySelector('[name="Service"]');
+    const message = form.querySelector('textarea[name="Text Area"]');
+    if (!name || !email || !message) return;
+
+    const button = form.querySelector('button[type="submit"]');
+    const defaultLabel = button ? (originalLabels.get(button) || button.textContent) : '';
+    if (button && !originalLabels.has(button)) originalLabels.set(button, defaultLabel);
+    let status = form.nextElementSibling;
+    if (!status || !status.classList.contains('github-contact-status')) {
+      status = document.createElement('div');
+      status.className = 'github-contact-status';
+      status.setAttribute('role', 'status');
+      status.setAttribute('aria-live', 'polite');
+      status.style.cssText = 'margin-top:12px;font:inherit;font-size:15px;line-height:1.5;';
+      form.insertAdjacentElement('afterend', status);
+    }
+    form.dataset.formspreeBusy = 'true';
+    if (button) {button.disabled = true; button.textContent = 'SENDING...';}
+    status.textContent = 'Sending your message...';
+    status.style.color = '#555';
+
+    const data = new FormData();
+    data.append('name', name.value.trim());
+    data.append('email', email.value.trim());
+    data.append('_replyto', email.value.trim());
+    data.append('service', service ? service.value : '');
+    data.append('message', message.value.trim());
+    data.append('_subject', 'New portfolio inquiry');
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!response.ok) {
+        let reason = '';
+        try {
+          const result = await response.json();
+          if (Array.isArray(result.errors)) reason = result.errors.map(e => e.message).join(' ');
+        } catch (_) {}
+        throw new Error(reason || 'Request failed (' + response.status + ')');
+      }
+      status.textContent = 'Thank you! Your message has been sent.';
+      status.style.color = '#22845b';
+      form.reset();
+      if (button) button.textContent = 'MESSAGE SENT';
+    } catch (error) {
+      status.textContent = 'Could not send your message. ' + (error.message || 'Please try again.');
+      status.style.color = '#d32749';
+      if (button) button.textContent = defaultLabel;
+    } finally {
+      delete form.dataset.formspreeBusy;
+      if (button) button.disabled = false;
+    }
+  }, true);
+})();
+</script>
 </body>
 
 <!-- Mirrored from https://mohamedhamila.framer.website/about by HTTrack Website Copier/3.x [XR&CO], Tue, 13 Oct 2026 18:52:15 GMT -->
